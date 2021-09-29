@@ -1,0 +1,61 @@
+name: fluffychat
+base: core18
+version: git
+summary: The cutest messenger in the Matrix network
+description: |
+  FluffyChat - Chat with your friends
+
+  The greatest FluffyChat features:
+  1. Opensource and open development where everyone can join.
+  2. Nonprofit - FluffyChat is donation funded.
+  3. Cute design and many theme settings including a dark mode.
+  4. Unlimited groups and direct chats.
+  5. FluffyChat is made as simple to use as possible.
+  6. Free to use for everyone without ads.
+  7. There is no "FluffyChat server" you are forced to use. Use the server
+  you find trustworthy or host your own.
+  8. Compatible with Element, Fractal, Nheko and all matrix messengers.
+
+  Join the community: https://matrix.to/#/#fluffychat:matrix.org
+  Website: http://fluffychat.im
+  Microblog: https://metalhead.club/@krille
+
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: amd64
+
+parts:
+  olm:
+    plugin: cmake
+    source: https://gitlab.matrix.org/matrix-org/olm.git
+    source-type: git
+    source-tag: 3.2.3
+    build-packages:
+      - g++
+  fluffychat:
+    plugin: dump
+    source: ./build/linux/x64/release/bundle/
+    build-packages:
+     - libsecret-1-dev
+     - libjsoncpp-dev
+    stage-packages:
+     - libsecret-1-dev
+     - libjsoncpp-dev
+
+slots:
+  dbus-svc:
+    interface: dbus
+    bus: session
+    name: chat.fluffy.fluffychat
+
+apps:
+  fluffychat:
+    extensions: [flutter-stable]
+    command: fluffychat
+    plugs:
+      - network
+      - home
+    slots:
+      - dbus-svc

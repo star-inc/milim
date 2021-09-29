@@ -1,0 +1,122 @@
+name: fluffychat
+description: Chat with your friends.
+publish_to: none
+version: 0.41.1+1410
+
+environment:
+  sdk: ">=2.6.0 <3.0.0"
+
+dependencies:
+  adaptive_dialog: ^1.1.0
+  adaptive_theme: ^2.2.0
+  audioplayers: ^0.20.1
+  cached_network_image: ^3.1.0
+  chewie: ^1.2.2
+  cupertino_icons: any
+  desktop_notifications: ">=0.4.0 <0.5.0" # Version 0.5.0 breaks web builds: https://github.com/canonical/dbus.dart/issues/250
+  email_validator: ^2.0.1
+  emoji_picker_flutter: ^1.0.7
+  #fcm_shared_isolate:
+  #  git: https://gitlab.com/famedly/libraries/fcm_shared_isolate.git
+  file_picker_cross: ^4.4.2
+  filesystem_picker: 2.0.0-nullsafety.0 # Using pre release to be compatible with Flutter 2.5
+  flutter:
+    sdk: flutter
+  # From this fix: https://github.com/g123k/flutter_app_badger/pull/47
+  flutter_app_badger:
+    git:
+      url: https://github.com/SuaMusica/flutter_app_badger.git
+      ref: feature/androidV2
+  flutter_app_lock: ^2.0.0
+  flutter_blurhash: ^0.6.0
+  flutter_cache_manager: ^3.1.2
+  flutter_inappwebview: ^5.3.2
+  flutter_local_notifications: ^6.0.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_map: ^0.14.0
+  flutter_matrix_html: # Use git version until flutter_math_fork is updated to 0.4.X
+    git: https://github.com/Sorunome/flutter_matrix_html.git
+  flutter_olm: ^1.1.2
+  flutter_openssl_crypto: ^0.0.1
+  flutter_secure_storage: ^4.2.1
+  flutter_slidable: ^0.6.0
+  flutter_svg: ^0.22.0
+  flutter_typeahead: ^3.2.1
+  future_loading_dialog: ^0.2.1
+  geolocator: ^7.6.2
+  hive_flutter: ^1.1.0
+  image_picker: ^0.8.4
+  intl: any
+  localstorage: ^4.0.0+1
+  lottie: ^1.1.0
+  matrix: ^0.5.5
+  matrix_link_text: ^1.0.2
+  native_imaging:
+    git: https://gitlab.com/famedly/libraries/native_imaging.git
+  open_noti_settings: ^0.2.0
+  package_info_plus: ^1.0.4
+  path_provider: ^2.0.2
+  permission_handler: ^8.1.4+2
+  pin_code_text_field: ^1.8.0
+  provider: ^6.0.0
+  punycode: ^1.0.0
+  qr_code_scanner: ^0.5.2
+  qr_flutter: ^4.0.0
+  receive_sharing_intent: ^1.4.5
+  record: ^3.0.0
+  scroll_to_index: ^2.0.0
+  sentry: ^6.0.0
+  share: ^2.0.4
+  slugify: ^2.0.0
+  swipe_to_action: ^0.2.0
+  uni_links: ^0.5.1
+  unifiedpush: ^1.0.6
+  universal_html: ^2.0.8
+  url_launcher: ^6.0.10
+  vrouter: 1.2.0+11
+  wakelock: ^0.5.6
+
+dev_dependencies:
+  dapackages: ^1.6.0
+  flutter_native_splash: ^1.2.3
+  flutter_test:
+    sdk: flutter
+  pedantic: ^1.11.1
+
+flutter_native_splash:
+  color: "#ffffff"
+  color_dark: "#000000"
+  image: "assets/info-logo.png"
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/sounds/
+    - assets/js/
+    - assets/js/package/
+
+  fonts:
+    - family: NotoEmoji
+      fonts:
+        - asset: fonts/NotoEmoji/NotoColorEmoji.ttf
+    - family: NotoSans
+      fonts:
+        - asset: fonts/NotoSans/NotoSans-Regular.ttf
+        - asset: fonts/NotoSans/NotoSans-Italic.ttf
+          style: italic
+        - asset: fonts/NotoSans/NotoSans-Bold.ttf
+          weight: 700
+        - asset: fonts/NotoSans/NotoSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+
+dependency_overrides:
+  geolocator_android:
+    git:
+      url: https://gitlab.com/hanntech-gmbh/free2pass/flutter-geolocator-floss.git
+      ref: 7.6.2
+      path: geolocator_android
+  provider: 5.0.0
